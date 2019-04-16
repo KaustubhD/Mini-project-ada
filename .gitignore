@@ -1,0 +1,13 @@
+*.swp
+
+.DS_Store
+
+.thumbs
+
+*.dSYM
+
+ll
+
+test
+
+*.o
