@@ -169,7 +169,7 @@ void test_3(){
 
 	printf("\n\n** Dijkstra's Algorithm **\n");
 	for(int i = 0; i < num; i++){
-		dijkstra(&G[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 0);
+		dijkstra(&G[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
 	}
 
 	timeTaken = (double) clock() - start1 / CLOCKS_PER_SEC;
@@ -181,7 +181,7 @@ void test_3(){
 	printf("\n\n** Floyd Warshall's Algorithm **\n");
 	floydWarshallM(&G[0][0], n);
 	for(int i = 0; i < num; i++){
-		getPaths(n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 0);
+		getPaths(n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
 	}
 
 	timeTaken = (double) clock() - start2 / CLOCKS_PER_SEC;

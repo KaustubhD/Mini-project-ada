@@ -56,7 +56,7 @@ void floydWarshall(int *G, int n, int startnode, int endnode, int isSilent){
     j = pred[startnode][j];
     if(isSilent == 0){ printf("<- %d", j + 1); }
   }while(j != startnode);
-  printf("\n\n");
+  if(isSilent == 0){ printf("\n\n"); }
 }
   
 void printAllDistances(int n, int aa[n][n]){
@@ -108,7 +108,7 @@ void getPaths( int n, int st, int en, int isSilent){
     j = *((pred + st*n) + j);
     if(isSilent == 0){ printf("<- %d", j + 1); }
   }while(j != st);
-  printf("\n\n");
+  if(isSilent == 0){ printf("\n\n"); }
 }
 
 

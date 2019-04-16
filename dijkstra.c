@@ -115,6 +115,6 @@ void dijkstra(int *G, int n, int startnode, int endnode, int isSilent){
 			}while(j != startnode);
 		}
 	}
-	printf("\n\n");
+	if(isSilent == 0){ printf("\n\n"); }
 }
 
