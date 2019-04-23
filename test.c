@@ -87,13 +87,15 @@ void initGraph(){
 	H[26][25] = 4;//
 }
 
-int* getMeta(){
+int* getMeta(int half){
 	static int a[3];
 	a[0] = sizeof(H)/sizeof(H[0]);
-	printf("\nStarting station no. >>");
-	scanf("%d", &a[1]);
-	printf("\nEnding station no. >>");
-	scanf("%d", &a[2]);
+	if(half == 0){
+		printf("\nStarting station no. >>");
+		scanf("%d", &a[1]);
+		printf("\nEnding station no. >>");
+		scanf("%d", &a[2]);
+	}
 
 	return a;
 }
@@ -101,7 +103,7 @@ int* getMeta(){
 void test_1(){
 	clock_t start;
 	double timeTaken = 0;
-	int *a = getMeta();
+	int *a = getMeta(0);
 
 	start = clock();
 
@@ -128,7 +130,8 @@ void test_2(){
 	clock_t start;
 	double timeTaken = 0;
 	
-	n = 5;
+	int *a = getMeta(1);
+	n = *a;
 	printf("Enter number of tests to run >>");
 	scanf("%d", &num);
 
@@ -136,7 +139,7 @@ void test_2(){
 
 	printf("\n\n** Dijkstra's Algorithm **\n");
 	for(int i = 0; i < num; i++){
-		dijkstra(&G[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
+		dijkstra(&H[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
 	}
 
 	timeTaken = (double) clock() - start / CLOCKS_PER_SEC;
@@ -147,7 +150,7 @@ void test_2(){
 
 	printf("\n\n** Floyd Warshall's Algorithm **\n");
 	for(int i = 0; i < num; i++){
-		floydWarshall(&G[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
+		floydWarshall(&H[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
 	}
 
 	timeTaken = (double) clock() - start / CLOCKS_PER_SEC;
@@ -161,7 +164,8 @@ void test_3(){
 	clock_t start1, start2;
 	double timeTaken = 0;
 	
-	n = 5;
+	int *a = getMeta(1);
+	n = *a;
 	printf("Enter number of tests to run >>");
 	scanf("%d", &num);
 
@@ -169,7 +173,7 @@ void test_3(){
 
 	printf("\n\n** Dijkstra's Algorithm **\n");
 	for(int i = 0; i < num; i++){
-		dijkstra(&G[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
+		dijkstra(&H[0][0], n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
 	}
 
 	timeTaken = (double) clock() - start1 / CLOCKS_PER_SEC;
@@ -179,7 +183,7 @@ void test_3(){
 	start2 = clock();
 
 	printf("\n\n** Floyd Warshall's Algorithm **\n");
-	floydWarshallM(&G[0][0], n);
+	floydWarshallM(&H[0][0], n);
 	for(int i = 0; i < num; i++){
 		getPaths(n, (rand() % (n-1)) + 1, (rand() % (n-1)) + 1, 1);
 	}
@@ -193,7 +197,7 @@ void test_4(){
 	int ch = 0;
 	Chckpt2: printf("\n\tEnter one of the following - \n\t( 1 ) Dijkstra's Algorithm\n\t( 2 ) Floyd Warshall's algorithm\n\t");
 	scanf("%d", &ch);
-	int *a = getMeta();
+	int *a = getMeta(0);
 	switch(ch){
     case 1:
 			dijkstra(&H[0][0], *a, *(a + 1), *(a + 2), 0);
